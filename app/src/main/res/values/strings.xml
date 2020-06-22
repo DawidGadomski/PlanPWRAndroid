@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">NavigationView</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="add_subject">Add Subject</string>
+    <string name="plan">Plan</string>
+    <string name="edit_plan">Edit plan</string>
+    <string name="lect">Wykład</string>
+
+    <string name="Term">Termin:</string>
+
+    <string name="Cancel">Anuluj</string>
+
+    <string name="Name">Nazwa:</string>
+
+    <string name="Time">Czas:</string>
+
+    <string name="Room">Sala:</string>
+
+    <string name="Lab">Lab</string>
+
+    <string name="Prof">Prowadzący:</string>
+
+    <string name="Week">Tyg</string>
+
+    <string name="OddWeek">TN</string>
+
+    <string name="EvenWeek">TP</string>
+
+    <string name="RoomHint">Budynek, Sala</string>
+
+    <string name="ProfHint">Prowadzący</string>
+
+    <string name="TermHint">Tydzień, godzina</string>
+
+    <string name="TimeHint">Czas trwania zajęć (min)</string>
+
+    <string name="NameHint">Nazwa przedmiotu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

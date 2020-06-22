@@ -18,7 +18,6 @@ public class SubjectRepository {
     }
 
     public void insert(Subject subject){
-        System.out.println(subject.getName());
         new InsertSubjectAsyncTask(subjectDao).execute();
     }
 
@@ -49,10 +48,8 @@ public class SubjectRepository {
 
         @Override
         protected Void doInBackground(Subject... subjects) {
-            for (Subject subject : subjects){
-                System.out.println(subject.getName());
-            }
-//            subjectDao.insert(subjects[0]);
+
+            subjectDao.insert(subjects[0]);
             return null;
         }
     }

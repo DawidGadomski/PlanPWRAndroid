@@ -31,8 +31,6 @@ public class PlanFragment extends Fragment {
         View view = inflater.inflate( R.layout.fragment_plan, container, false);
 
         grid = view.findViewById(R.id.grid);
-        //mainWindowSettings = new MainWindowSettings(grid);
-
 
         return view;
     }
@@ -51,8 +49,9 @@ public class PlanFragment extends Fragment {
         subjectViewModel.getSubjectData().observe(getViewLifecycleOwner(), new Observer<Map<String, Object>>() {
             @Override
             public void onChanged(Map<String, Object> stringObjectMap) {
-                Subject subject = new Subject(grid, mainWindowSettings.getWorkSurfacePosX(), mainWindowSettings.getWorkSurfacePosY(), stringObjectMap);
+                Subject subject = new Subject(stringObjectMap);
                 subjectViewModel.insert(subject);
+                grid.postInvalidate();
                 Toast.makeText(requireActivity(), "Insert", Toast.LENGTH_SHORT).show();
             }
         });

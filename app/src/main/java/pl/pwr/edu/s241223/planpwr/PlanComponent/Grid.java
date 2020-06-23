@@ -6,10 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.SubMenu;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -19,13 +18,13 @@ import java.util.concurrent.TimeUnit;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.Settings.MainWindowSettings;
-import pl.pwr.edu.s241223.planpwr.Settings.Settings;
 
 
 public class Grid extends View {
     private int WIDTH;
     private int HEIGHT;
     private MainWindowSettings settings;
+    private GestureDetector gestureDetector;
 
     private List<Subject> subjects;
 
@@ -39,6 +38,8 @@ public class Grid extends View {
     public Grid(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
+        gestureDetector = new GestureDetector(context, new GestureListener());
+
 
     }
 
@@ -65,8 +66,9 @@ public class Grid extends View {
         gridPaint.setColor(settings.getGridColor());
         workspacePaint.setColor(settings.getWorkspaceColor());
 
-
-
+//        for(Subject subject : subjects){
+//            subject.setSettings(settings);
+//        }
         this.setBackgroundColor(settings.getBackgroundColor());
 
     }
@@ -81,6 +83,8 @@ public class Grid extends View {
 
         for(Subject subject : subjects){
             subject.setSettings(settings);
+            subject.setWidth();
+            subject.setHeight();
 
             subject.drawSubject(canvas, paint);
             if(subject.getClickedFlag()){
@@ -127,6 +131,7 @@ public class Grid extends View {
                 paint);
 
     }
+
     private void drawText(Canvas canvas){
 //      Note text
         canvas.save();
@@ -173,43 +178,64 @@ public class Grid extends View {
         this.subjects = subjectsList;
     }
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean value = super.onTouchEvent(event);
+        return gestureDetector.onTouchEvent(event);
+    }
 
-        for (Subject subject : subjects) {
-            float x = event.getX();
-            float y = event.getY();
-
-            if (subject.isOver(x, y)) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:{
-                        System.out.println("up");
-                        subject.setClickedFlag(true);
-                    }
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
 
 
-                    case MotionEvent.ACTION_MOVE: {
 
-                        System.out.println("move");
-                        subject.move(x, y);
+        @Override
+        public boolean onDown(MotionEvent event) {
+            for (Subject subject : subjects) {
+                float x = event.getX();
+                float y = event.getY();
 
-                        postInvalidate();
-                        return true;
-                    }
+                if (subject.isOver(x, y)) {
 
-                    case MotionEvent.ACTION_UP: {
-                        System.out.println("down");
-                        subject.setClickedFlag(false);
-                        postInvalidate();
-                        return true;
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN: {
+                            System.out.println("up");
+                            subject.setClickedFlag(true);
+                        }
+
+
+                        case MotionEvent.ACTION_MOVE: {
+
+                            System.out.println("move");
+                            subject.move(x, y);
+                            postInvalidate();
+
+                        }
+
+                        case MotionEvent.ACTION_UP: {
+                            System.out.println("down");
+                            subject.setClickedFlag(false);
+                            postInvalidate();
+
+                        }
+
                     }
                 }
             }
+            return true;
         }
-        return value;
-    }
 
+        // event when double tap occurs
+        @Override
+        public boolean onDoubleTap(MotionEvent event) {
+            for (Subject subject : subjects) {
+                float x = event.getX();
+                float y = event.getY();
+
+                if (subject.isOver(x, y)) {
+                    System.out.println("dziala");
+                    return true;
+                }
+            }
+            return true;
+        }
+    }
 }

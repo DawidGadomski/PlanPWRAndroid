@@ -18,15 +18,16 @@ public class SubjectRepository {
     }
 
     public void insert(Subject subject){
-        new InsertSubjectAsyncTask(subjectDao).execute();
+
+        new InsertSubjectAsyncTask(subjectDao).execute(subject);
     }
 
     public void update(Subject subject){
-        new UpdateSubjectAsyncTask(subjectDao).execute();
+        new UpdateSubjectAsyncTask(subjectDao).execute(subject);
     }
 
     public void delete(Subject subject){
-        new DeleteSubjectAsyncTask(subjectDao).execute();
+        new DeleteSubjectAsyncTask(subjectDao).execute(subject);
     }
 
     public LiveData<List<Subject>> getAllSubjects(){
@@ -48,7 +49,6 @@ public class SubjectRepository {
 
         @Override
         protected Void doInBackground(Subject... subjects) {
-
             subjectDao.insert(subjects[0]);
             return null;
         }

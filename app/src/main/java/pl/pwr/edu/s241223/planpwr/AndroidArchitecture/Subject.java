@@ -78,11 +78,9 @@ public class Subject {
 
     /***
      * Tworzenie nowego przedmiotu
-     * @param x - miejsce X w którym stworzy się obiekt
-     * @param y - współrzędna Y w któym stworzy się obiekt
      * @param map - mapa dostarczona przez formularz tworzenia przedmiotu (InputForm) zawierająca dane do stworzenia przedmiotu
      */
-    public Subject(Grid grid, float x, float y, Map<String, Object> map){
+    public Subject(Map<String, Object> map){
 //      Init
 
 //        this.noteArrayList = new ArrayList<Note>();
@@ -91,8 +89,9 @@ public class Subject {
         this.color = Color.parseColor("#FFFF00FF");
 
 //      Data of Subject
-        this.posX = x;
-        this.posY = y;
+
+        this.posX = 150;
+        this.posY = 150;
         this.name = String.valueOf(map.get("name"));
         this.term = String.valueOf(map.get("term"));
         this.time = Integer.parseInt(String.valueOf(map.get("time")));
@@ -105,7 +104,8 @@ public class Subject {
 
 //      Update color and width (based on data of subject)
         selectColor();
-        setWidth();
+//        setWidth();
+//        setHeight();
 //        this.dataMap = map;
 
     }
@@ -283,6 +283,10 @@ public class Subject {
      */
     public void setWidth() {
         this.width = this.time / 15f * settings.getTileWidth();
+    }
+
+    public void setHeight(){
+        this.height = this.settings.getTileHeight()*2;
     }
 
     /***

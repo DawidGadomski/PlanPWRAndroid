@@ -179,63 +179,60 @@ public class Grid extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event);
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        int action = motionEvent.getAction();
+        for (Subject subject : subjects) {
+            float x = motionEvent.getX();
+            float y = motionEvent.getY();
+
+            if (subject.isOver(x, y)) {
+                gestureDetector.onTouchEvent(motionEvent);
+                switch (action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        System.out.println("up");
+                        subject.setClickedFlag(true);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        System.out.println("move");
+                        subject.move(x, y);
+                        postInvalidate();
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        System.out.println("down");
+                        subject.setClickedFlag(false);
+                        postInvalidate();
+                        return true;
+                    case (MotionEvent.ACTION_CANCEL):
+
+                        return true;
+                    case (MotionEvent.ACTION_OUTSIDE):
+
+                        return true;
+                    default:
+                        gestureDetector.onTouchEvent(motionEvent);
+                        return true;
+                }
+            }
+        }
+        gestureDetector.onTouchEvent(motionEvent);
+        return true;
     }
 
     private class GestureListener extends GestureDetector.SimpleOnGestureListener {
 
-
-
-        @Override
-        public boolean onDown(MotionEvent event) {
-            for (Subject subject : subjects) {
-                float x = event.getX();
-                float y = event.getY();
-
-                if (subject.isOver(x, y)) {
-
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN: {
-                            System.out.println("up");
-                            subject.setClickedFlag(true);
-                        }
-
-
-                        case MotionEvent.ACTION_MOVE: {
-
-                            System.out.println("move");
-                            subject.move(x, y);
-                            postInvalidate();
-
-                        }
-
-                        case MotionEvent.ACTION_UP: {
-                            System.out.println("down");
-                            subject.setClickedFlag(false);
-                            postInvalidate();
-
-                        }
-
-                    }
-                }
-            }
-            return true;
-        }
-
         // event when double tap occurs
         @Override
         public boolean onDoubleTap(MotionEvent event) {
-            for (Subject subject : subjects) {
-                float x = event.getX();
-                float y = event.getY();
 
-                if (subject.isOver(x, y)) {
-                    System.out.println("dziala");
-                    return true;
-                }
-            }
-            return true;
+            System.out.println("dziala");
+            return false;
+
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            System.out.println("long");
+
         }
     }
 }

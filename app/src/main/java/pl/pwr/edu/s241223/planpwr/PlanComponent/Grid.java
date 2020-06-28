@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,7 +25,6 @@ public class Grid extends View {
     private int WIDTH;
     private int HEIGHT;
     private MainWindowSettings settings;
-    private GestureDetector gestureDetector;
 
     private List<Subject> subjects;
 
@@ -38,7 +38,7 @@ public class Grid extends View {
     public Grid(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
-        gestureDetector = new GestureDetector(context, new GestureListener());
+
 
 
     }
@@ -66,9 +66,6 @@ public class Grid extends View {
         gridPaint.setColor(settings.getGridColor());
         workspacePaint.setColor(settings.getWorkspaceColor());
 
-//        for(Subject subject : subjects){
-//            subject.setSettings(settings);
-//        }
         this.setBackgroundColor(settings.getBackgroundColor());
 
     }
@@ -178,61 +175,6 @@ public class Grid extends View {
         this.subjects = subjectsList;
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        int action = motionEvent.getAction();
-        for (Subject subject : subjects) {
-            float x = motionEvent.getX();
-            float y = motionEvent.getY();
 
-            if (subject.isOver(x, y)) {
-                gestureDetector.onTouchEvent(motionEvent);
-                switch (action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        System.out.println("up");
-                        subject.setClickedFlag(true);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        System.out.println("move");
-                        subject.move(x, y);
-                        postInvalidate();
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        System.out.println("down");
-                        subject.setClickedFlag(false);
-                        postInvalidate();
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
 
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-
-                        return true;
-                    default:
-                        gestureDetector.onTouchEvent(motionEvent);
-                        return true;
-                }
-            }
-        }
-        gestureDetector.onTouchEvent(motionEvent);
-        return true;
-    }
-
-    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-
-        // event when double tap occurs
-        @Override
-        public boolean onDoubleTap(MotionEvent event) {
-
-            System.out.println("dziala");
-            return false;
-
-        }
-
-        @Override
-        public void onLongPress(MotionEvent e) {
-            System.out.println("long");
-
-        }
-    }
 }

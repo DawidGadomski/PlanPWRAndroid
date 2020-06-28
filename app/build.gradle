@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+android.defaultConfig.vectorDrawables.useSupportLibrary = true
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -13,6 +14,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {

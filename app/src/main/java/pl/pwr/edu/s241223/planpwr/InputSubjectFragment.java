@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
 
 public class InputSubjectFragment extends Fragment {
@@ -24,6 +25,9 @@ public class InputSubjectFragment extends Fragment {
     private AlertDialog.Builder builder;
 
     private SubjectViewModel subjectViewModel;
+
+    private Bundle bundle;
+    private Subject subjectToEdit;
 
     private EditText etName, etTime, etTerm, etRoom, etProf;
     private Button bAccept, bCancel;
@@ -53,6 +57,12 @@ public class InputSubjectFragment extends Fragment {
 //                    }
 //                });
 
+
+
+
+
+
+
         etName = view.findViewById(R.id.edName);
         etTime = view.findViewById(R.id.edTime);
         etTerm = view.findViewById(R.id.edTerm);
@@ -67,6 +77,16 @@ public class InputSubjectFragment extends Fragment {
         rOddWeek = view.findViewById(R.id.rbOddWeek);
         rLect = view.findViewById(R.id.rbLect);
         rLab = view.findViewById(R.id.rbLab);
+
+        bundle = getArguments();
+        if(bundle != null) {
+            subjectToEdit = (Subject) bundle.getSerializable("Subject");
+            etName.setText(subjectToEdit.getName());
+            etTime.setText(subjectToEdit.getTime());
+            etTerm.setText(subjectToEdit.getTerm());
+            etRoom.setText(subjectToEdit.getRoom());
+            etProf.setText(subjectToEdit.getProf());
+        }
 
         bAccept.setOnClickListener(new View.OnClickListener() {
             @Override

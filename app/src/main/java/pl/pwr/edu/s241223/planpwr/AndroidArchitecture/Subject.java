@@ -9,6 +9,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ import pl.pwr.edu.s241223.planpwr.Subjects.DataOfSubject;
  * Dane przedmiotu składowane są w obiekcie DataOfSubject
  */
 @Entity(tableName = "subject_table")
-public class Subject {
+public class Subject implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 

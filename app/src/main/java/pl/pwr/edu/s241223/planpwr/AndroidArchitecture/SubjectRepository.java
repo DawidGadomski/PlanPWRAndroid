@@ -34,6 +34,8 @@ public class SubjectRepository {
         return allSubjects;
     }
 
+    public void deleteAll(){new DeleteAllSubjectAsyncTask(subjectDao).execute();}
+
     /*
     Funkcja getAllSubjects jest możliwa do wykonania w backgroundzie, natomiast Room nie pozwoli na
     prace z bazą danych w backgroundzie bo to może zamrozić aplikacje, w odpowiedzi na ten problem
@@ -76,6 +78,20 @@ public class SubjectRepository {
         @Override
         protected Void doInBackground(Subject... subjects) {
             subjectDao.delete(subjects[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAllSubjectAsyncTask extends AsyncTask<Subject, Void, Void>{
+        private SubjectDao subjectDao;
+
+        private DeleteAllSubjectAsyncTask(SubjectDao subjectDao){
+            this.subjectDao = subjectDao;
+        }
+
+        @Override
+        protected Void doInBackground(Subject... subjects) {
+            subjectDao.deleteSubjects();
             return null;
         }
     }

@@ -51,7 +51,7 @@ public class MainWindowSettings extends Settings {
 //        daysFontSize = R.dimen.days_font_size;
 //        timesFontSize = R.dimen.times_font_size;
         workspaceFontSize  = 10;
-        daysFontSize = 10;
+        daysFontSize = 20;
         timesFontSize = 10;
     }
 

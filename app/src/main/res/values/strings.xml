@@ -46,4 +46,7 @@
     <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="clear_plan">Clear plan</string>
+    <string name="actions">Actions</string>
+    <string name="settings">Settings</string>
 </resources>

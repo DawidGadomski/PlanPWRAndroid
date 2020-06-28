@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,10 +14,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationView;
-import pl.pwr.edu.s241223.planpwr.InputSubjectFragment;
+
+import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+
+    private SubjectViewModel subjectViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        subjectViewModel = new ViewModelProvider(this).get(SubjectViewModel.class);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -66,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_add_sub:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new InputSubjectFragment()).commit();
+                break;
+            case R.id.nav_clear_plan:
+                subjectViewModel.deleteAll();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

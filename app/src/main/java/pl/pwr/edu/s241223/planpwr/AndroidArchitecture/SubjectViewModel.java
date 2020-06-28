@@ -47,4 +47,6 @@ public class SubjectViewModel extends AndroidViewModel {
     public LiveData<List<Subject>> getAllSubjects(){
         return allSubjects;
     }
+
+    public void deleteAll() {repository.deleteAll();}
 }

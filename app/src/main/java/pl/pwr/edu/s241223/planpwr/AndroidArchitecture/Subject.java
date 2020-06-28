@@ -298,6 +298,7 @@ public class Subject implements Serializable {
         if (this.week.equals("TN")){
             canvas.drawRect(this.posX, this.posY, (this.posX+this.width), (this.posY+this.height / 2), paint);
             paint.setColor(Color.WHITE);
+            paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(this.name, (this.posX + this.width / 2),
                     (this.posY + this.height / 4), paint);
         }
@@ -305,12 +306,14 @@ public class Subject implements Serializable {
             canvas.drawRect(this.posX, (this.posY + settings.getTileHeight()),
                     (this.posX+this.width), (this.posY+this.height), paint);
             paint.setColor(Color.WHITE);
+            paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(this.name, (this.posX + this.width / 2),
                     (this.posY + this.height * 3 / 4), paint);
         }
         else {
             canvas.drawRect(this.posX, this.posY, (this.posX + this.width), (this.posY + this.height), paint);
             paint.setColor(Color.WHITE);
+            paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(this.name, (this.posX + this.width / 2),
                     (this.posY + this.height / 2), paint);
         }

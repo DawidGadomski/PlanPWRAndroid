@@ -83,7 +83,7 @@ public class Grid extends View {
             subject.setWidth();
             subject.setHeight();
 
-            subject.drawSubject(canvas, paint);
+            subject.drawSubject(canvas, subjectPaint);
             if(subject.getClickedFlag()){
                 subject.drawOutline(canvas, subjectPaint);
             }
@@ -131,22 +131,23 @@ public class Grid extends View {
 
     private void drawText(Canvas canvas){
 //      Note text
-        canvas.save();
-        canvas.rotate(-90, settings.getWorkspacePosX()/2,
-                settings.getHEIGHT());
-        paint.setTextSize(settings.getWorkspaceFontSize());
-        settings.drawTextCentred(canvas, paint, "Workspace",
-                settings.getWorkSurfacePosX()/2 + settings.getTileHeight(),
-                settings.getHEIGHT());
-        canvas.restore();
+//        canvas.save();
+//        canvas.rotate(-90, settings.getWorkspacePosX()/2,
+//                settings.getHEIGHT());
+//        paint.setTextSize(settings.getWorkspaceFontSize());
+//        paint.setTextAlign(Paint.Align.CENTER);
+//        canvas.drawText("Workspace", settings.getWorkSurfacePosX()/2 + settings.getTileHeight(),
+//                settings.getHEIGHT(), paint);
+//
+//        canvas.restore();
 
 //      Draw days on grid
         paint.setTextSize(settings.getDaysFontSize());
+        paint.setTextAlign(Paint.Align.CENTER);
         for(int index = 0; index<settings.getDays().length; index++){
             canvas.save();
-            settings.drawTextCentred(canvas, paint, settings.getDays()[index],
-                    settings.getDaysPosX(),
-                    (settings.getDaysOffset() + settings.getDaysPosY() * index));
+            canvas.drawText(settings.getDays()[index], settings.getDaysPosX(),
+                    (settings.getDaysOffset() + settings.getDaysPosY() * index), paint);
             canvas.restore();
         }
 
@@ -154,6 +155,7 @@ public class Grid extends View {
         Timestamp timestamp = new Timestamp(2020,0,1,7,30,0,0);
         String timeStamp = settings.getSdf().format(timestamp);
         paint.setTextSize(settings.getTimesFontSize());
+        paint.setTextAlign(Paint.Align.CENTER);
 
         for(int index = 0; index < 55; index++){
             canvas.save();
@@ -161,10 +163,11 @@ public class Grid extends View {
                     settings.getTimeTextOffset() + settings.getTileWidth()
                             / 2 + settings.getTimePosX() * index,
                     settings.getTimePosY()-(settings.getTileHeight()/2));
-            settings.drawTextCentred(canvas, paint, timeStamp,
-                    settings.getTimeTextOffset() + settings.getTileWidth()
+
+            canvas.drawText(timeStamp, settings.getTimeTextOffset() + settings.getTileWidth()
                             / 2 + settings.getTimePosX() * index,
-                    settings.getTimePosY()-(settings.getTileHeight()/2));
+                    settings.getTimePosY()-(settings.getTileHeight()/2), paint);
+
             canvas.restore();
             timestamp.setTime(timestamp.getTime() + TimeUnit.MINUTES.toMillis(15));
             timeStamp = settings.getSdf().format(timestamp);

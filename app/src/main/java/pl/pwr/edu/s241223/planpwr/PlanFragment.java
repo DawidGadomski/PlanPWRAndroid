@@ -6,18 +6,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
-import java.util.Map;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
@@ -37,20 +34,10 @@ public class PlanFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plan, container, false);
 
-
-        subjectViewModel = new ViewModelProvider(requireActivity()).get(SubjectViewModel.class);
-        subjectViewModel.getAllSubjects().observe(getViewLifecycleOwner(), new Observer<List<Subject>>() {
-            @Override
-            public void onChanged(List<Subject> subjects) {
-                subjectsList = subjects;
-            }
-        });
-
         grid = view.findViewById(R.id.grid);
         grid.setOnTouchListener(handleTouchOnGrid);
         gestureListener = new GestureListener();
         gestureDetector = new GestureDetector(getContext(), gestureListener);
-
 
         return view;
     }
@@ -63,16 +50,8 @@ public class PlanFragment extends Fragment {
             @Override
             public void onChanged(List<Subject> subjects) {
                 grid.setSubjectsList(subjects);
-                Toast.makeText(requireActivity(), "OnChange", Toast.LENGTH_SHORT).show();
-            }
-        });
-        subjectViewModel.getSubjectData().observe(getViewLifecycleOwner(), new Observer<Map<String, Object>>() {
-            @Override
-            public void onChanged(Map<String, Object> stringObjectMap) {
-                Subject subject = new Subject(stringObjectMap);
-                subjectViewModel.insert(subject);
+                subjectsList = subjects;
                 grid.postInvalidate();
-                Toast.makeText(requireActivity(), "Insert", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -95,10 +74,6 @@ public class PlanFragment extends Fragment {
 
                         @Override
                         public boolean onDoubleTap(MotionEvent e) {
-                            System.out.println("double");
-
-                            subject.setClickedFlag(false);
-                            grid.postInvalidate();
 
                             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -112,7 +87,7 @@ public class PlanFragment extends Fragment {
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
 
-                            return false;
+                            return true;
                         }
 
                         @Override
@@ -121,20 +96,25 @@ public class PlanFragment extends Fragment {
                         }
                     });
                     gestureDetector.onTouchEvent(motionEvent);
+
                     switch (action) {
                         case (MotionEvent.ACTION_DOWN):
-                            System.out.println("up");
+
                             subject.setClickedFlag(true);
+
                             return true;
                         case (MotionEvent.ACTION_MOVE):
-                            System.out.println("move");
+
                             subject.move(x, y);
                             grid.postInvalidate();
+
                             return true;
                         case (MotionEvent.ACTION_UP):
-                            System.out.println("down");
+
                             subject.setClickedFlag(false);
+                            subjectViewModel.update(subject);
                             grid.postInvalidate();
+
                             return true;
                         case (MotionEvent.ACTION_CANCEL):
 
@@ -143,21 +123,25 @@ public class PlanFragment extends Fragment {
 
                             return true;
                         default:
+
                             gestureDetector.onTouchEvent(motionEvent);
+                            subject.setClickedFlag(false);
+                            grid.postInvalidate();
 
                             return true;
                     }
                 }
             }
             gestureDetector.onTouchEvent(motionEvent);
+            grid.postInvalidate();
+
             return true;
         }
     };
 
     private class GestureListener extends GestureDetector.SimpleOnGestureListener {
 
-        // event when double tap occurs
-
+        // event when long press occurs
         @Override
         public void onLongPress(MotionEvent e) {
             System.out.println("long");

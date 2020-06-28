@@ -11,11 +11,10 @@ import java.util.ArrayList;
 
 import javax.security.auth.Subject;
 
-import pl.pwr.edu.s241223.planpwr.Subjects.*;
-import pl.pwr.edu.s241223.planpwr.PlanComponent.Grid;
-
 public class Settings {
+
 //      Settings
+
     protected float WIDTH;
     protected float HEIGHT;
     protected float tileWidth, tileHeight;
@@ -28,13 +27,8 @@ public class Settings {
     private int gridColor;
     private int workspaceColor;
 
-
 //  Data
     private ArrayList<Subject> subjects;
-    private ArrayList<DataOfSubject> subjectsList;
-    private ArrayList<DataOfNote> notesList;
-//    protected ArrayList<Note> notes;
-
 
     @SuppressLint("SimpleDateFormat")
     public Settings(int width, int height) {
@@ -50,11 +44,9 @@ public class Settings {
         textBounds = new Rect();
 
 //      Colors
-//        backgroundPaint.setColor(getResources().getColor(android.R.color.background));
         backgroundColor = Color.parseColor("#FF282828");
         gridColor = Color.parseColor("#FF808080");
         workspaceColor = Color.parseColor("#FFC8C8C8");
-
 
         sdf =  new SimpleDateFormat("HH.mm");
     }
@@ -93,14 +85,6 @@ public class Settings {
 
     public ArrayList<Subject> getSubjects() {
         return subjects;
-    }
-
-    public ArrayList<DataOfSubject> getSubjectsList() {
-        return subjectsList;
-    }
-
-    public ArrayList<DataOfNote> getNotesList() {
-        return notesList;
     }
 
     public float getSubjectWidth() {

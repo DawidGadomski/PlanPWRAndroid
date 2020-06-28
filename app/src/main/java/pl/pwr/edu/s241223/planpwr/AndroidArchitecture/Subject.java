@@ -10,13 +10,9 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Map;
 
-import pl.pwr.edu.s241223.planpwr.PlanComponent.Grid;
 import pl.pwr.edu.s241223.planpwr.Settings.MainWindowSettings;
-import pl.pwr.edu.s241223.planpwr.Subjects.DataOfNote;
-import pl.pwr.edu.s241223.planpwr.Subjects.DataOfSubject;
 
 /***
  * Klasa odpowiadająca za tworzenie i rysyowanie obiektu typu przedmiot
@@ -103,64 +99,23 @@ public class Subject implements Serializable {
         this.absences = 0;
         this.allAbsences = 1;
 
-//      Update color and width (based on data of subject)
+//      Update color (based on data of subject)
         selectColor();
-//        setWidth();
-//        setHeight();
+
 //        this.dataMap = map;
 
     }
 
-    /***
-     * Tworzenie przedmiotu na podstawie obiektu zawierającego dane przedmiotu (klasa DataOfSubject)
-     * Konstrukto służy do stworzenia przedmiotu na podstawie wczytanej z pliku json listy przedmiotow
-     * @param dataOfSubject - zawiera dane potrzebne do odtworzenia przedmiotu z zapisanej do pliku json listy przedmiotów
-     */
-    public Subject(Grid grid, DataOfSubject dataOfSubject){
-//      Init
-
-//        noteArrayList = new ArrayList<Note>();
-
-        this.color = Color.parseColor("#FFFF00FF");
-
-//      Data of Subject
-        this.posX = dataOfSubject.getPosX();
-        this.posY = dataOfSubject.getPosY();
-        this.name = dataOfSubject.getName();
-        this.term = dataOfSubject.getTerm();
-        this.time = dataOfSubject.getTime();
-        this.prof = dataOfSubject.getProf();
-        this.room = dataOfSubject.getRoom();
-        this.type = dataOfSubject.getType();
-        this.week = dataOfSubject.getWeek();
-        this.absences = dataOfSubject.getAbsences();
-        this.allAbsences = dataOfSubject.getAllAbsences();
-//        this.testList = dataOfSubject.getTestList();
-
-//        for(DataOfNote dataOfNote: dataOfSubject.getNotes()){
-//            noteArrayList.add(new Note(dataOfNote));
-//        }
-
-//      Update color and width (based on data of subject)
-        selectColor();
-        setWidth();
+    public void updateSubject(Map<String, Object> dataMap){
+        this.name = String.valueOf(dataMap.get("name"));
+        this.term = String.valueOf(dataMap.get("term"));
+        this.time = Integer.parseInt(String.valueOf(dataMap.get("time")));
+        this.prof = String.valueOf(dataMap.get("prof"));
+        this.room = String.valueOf(dataMap.get("room"));
+        this.type = Integer.parseInt(String.valueOf(dataMap.get("type")));
+        this.week = String.valueOf(dataMap.get("week"));
     }
 
-    public void addAbsence(){
-        this.absences +=1;
-    }
-    public void removeAbsence(){
-        this.absences -=1;
-    }
-
-    //  Getters and Setters
-//    public void setNoteArrayList(ArrayList<Note> noteArrayList) {
-//        this.noteArrayList = noteArrayList;
-//    }
-
-//    public ArrayList<Note> getNoteArrayList() {
-//        return noteArrayList;
-//    }
     public String getName(){
         return this.name;
     }
@@ -248,22 +203,6 @@ public class Subject implements Serializable {
 
     //  Functions of Subject
 
-    /***
-     * Funkcja tworząca i zwracająca obiekt zawierający dane przedmiotu potrzebne do odtworzenia
-     * W ramach zapisu Notatek przedmiotu tworzona jest lista zawierająca dane notatek (DataOfNote)
-     * @return - obiekt DataOfSubject
-     */
-    public DataOfSubject convertSubjectToData(){
-//      List of DataOfNote
-        ArrayList<DataOfNote> dataOfNoteArrayList = new ArrayList<DataOfNote>();
-//        for(Note note: this.noteArrayList){
-//            dataOfNoteArrayList.add(note.getDataMap());
-//        }
-//      Return Data Of Subject
-        return new DataOfSubject(this.posX, this.posY, this.name, this.term, this.time, this.prof,
-                this.room, this.type, this.week, dataOfNoteArrayList,
-                this.absences, this.allAbsences);
-    }
 
     /***
      * Funkcja wyznaczająca kolor przedmiotu na podstawie typu
@@ -303,8 +242,8 @@ public class Subject implements Serializable {
             canvas.drawRect(this.posX, this.posY, (this.posX+this.width), (this.posY+this.height / 2),paint);
         }
         else if (this.week.equals("TP")){
-            canvas.drawRect(this.posX, (this.posY + this.height / 2),
-                    (this.posX+this.width), (this.posY+this.height / 2), paint);
+            canvas.drawRect(this.posX, (this.posY + settings.getTileHeight()),
+                    (this.posX+this.width), (this.posY+this.height), paint);
         }
         else{
             canvas.drawRect(this.posX, this.posY, (this.posX+this.width), (this.posY + this.height), paint);
@@ -353,27 +292,23 @@ public class Subject implements Serializable {
      */
     public void drawSubject(Canvas canvas, Paint paint) {
         canvas.save();
+        paint.setColor(this.color);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(3);
         if (this.week.equals("TN")){
-            paint.setColor(this.color);
-            paint.setStyle(Paint.Style.FILL);
-            canvas.drawRect(this.posX, this.posY, this.width, (this.height / 2), paint);
+            canvas.drawRect(this.posX, this.posY, (this.posX+this.width), (this.posY+this.height / 2), paint);
             paint.setColor(Color.WHITE);
             canvas.drawText(this.name, (this.posX + this.width / 2),
                     (this.posY + this.height / 4), paint);
-
         }
         else if (this.week.equals("TP")){
-            paint.setColor(this.color);
-            paint.setStyle(Paint.Style.FILL);
-            canvas.drawRect(this.posX, (this.posY + this.height / 2),
-                    this.width, (this.height / 2), paint);
+            canvas.drawRect(this.posX, (this.posY + settings.getTileHeight()),
+                    (this.posX+this.width), (this.posY+this.height), paint);
             paint.setColor(Color.WHITE);
             canvas.drawText(this.name, (this.posX + this.width / 2),
                     (this.posY + this.height * 3 / 4), paint);
         }
         else {
-            paint.setColor(this.color);
-            paint.setStrokeWidth(3);
             canvas.drawRect(this.posX, this.posY, (this.posX + this.width), (this.posY + this.height), paint);
             paint.setColor(Color.WHITE);
             canvas.drawText(this.name, (this.posX + this.width / 2),

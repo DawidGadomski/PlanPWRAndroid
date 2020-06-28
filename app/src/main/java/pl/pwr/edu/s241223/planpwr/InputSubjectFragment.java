@@ -57,12 +57,6 @@ public class InputSubjectFragment extends Fragment {
 //                    }
 //                });
 
-
-
-
-
-
-
         etName = view.findViewById(R.id.edName);
         etTime = view.findViewById(R.id.edTime);
         etTerm = view.findViewById(R.id.edTerm);
@@ -82,22 +76,48 @@ public class InputSubjectFragment extends Fragment {
         if(bundle != null) {
             subjectToEdit = (Subject) bundle.getSerializable("Subject");
             etName.setText(subjectToEdit.getName());
-            etTime.setText(subjectToEdit.getTime());
+            etTime.setText(String.valueOf(subjectToEdit.getTime()));
             etTerm.setText(subjectToEdit.getTerm());
             etRoom.setText(subjectToEdit.getRoom());
             etProf.setText(subjectToEdit.getProf());
-        }
-
-        bAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> dataMap = createDataOfSubject();
-                subjectViewModel.setSubjectData(dataMap);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new PlanFragment()).commit();
-
+            if(subjectToEdit.getType()==1){
+                rLab.setChecked(true);
             }
-        });
+            else rLect.setChecked(true);
+
+            if(subjectToEdit.getWeek().equals("TN")){
+                rOddWeek.setChecked(true);
+            }
+            else if(subjectToEdit.getWeek().equals("TP")){
+                rEvenWeek.setChecked(true);
+            }
+            else rWeek.setChecked(true);
+
+            bAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Map<String, Object> dataMap = createDataOfSubject();
+                    subjectToEdit.updateSubject(dataMap);
+                    subjectViewModel.update(subjectToEdit);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new PlanFragment()).commit();
+
+                }
+            });
+        }
+        else {
+            bAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Map<String, Object> dataMap = createDataOfSubject();
+                    subjectViewModel.insert(new Subject(dataMap));
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new PlanFragment()).commit();
+
+                }
+            });
+        }
 
         bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,9 +136,7 @@ public class InputSubjectFragment extends Fragment {
         subjectViewModel = new ViewModelProvider(requireActivity()).get(SubjectViewModel.class);
     }
 
-    //    public void sendBack(Map<String, Object>){
-//        if()
-//    }
+
 
     public void setName(String n) {
         this.name = n;

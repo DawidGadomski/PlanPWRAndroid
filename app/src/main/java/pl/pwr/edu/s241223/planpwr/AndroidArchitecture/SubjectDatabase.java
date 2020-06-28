@@ -30,7 +30,7 @@ public abstract class SubjectDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
 //            new PopulateDbAsyncTask(instance).execute();
-//            new ClearDbAsyncTask(instance).execute();
+            new ClearDbAsyncTask(instance).execute();
         }
     };
 

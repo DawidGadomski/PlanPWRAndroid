@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -44,6 +43,9 @@ public class MenuFragment extends Fragment {
         assert bundle != null;
         subject = (Subject) bundle.getSerializable("Subject");
 
+        assert subject != null;
+        subject.setClickedFlag(false);
+
         tvName = view.findViewById(R.id.tvName);
         tvTerm = view.findViewById(R.id.tvTerm);
         tvProf = view.findViewById(R.id.tvProf);
@@ -61,7 +63,9 @@ public class MenuFragment extends Fragment {
         bBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+//                subjectViewModel.update(subject);
+                getActivity().getSupportFragmentManager().popBackStack();
+                System.out.println("quit");
             }
         });
 
@@ -86,7 +90,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 subjectViewModel.delete(subject);
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
 

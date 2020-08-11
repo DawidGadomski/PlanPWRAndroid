@@ -26,4 +26,6 @@ public interface SubjectDao {
 
     @Query("DELETE FROM subject_table")
     void deleteSubjects();
+
+
 }

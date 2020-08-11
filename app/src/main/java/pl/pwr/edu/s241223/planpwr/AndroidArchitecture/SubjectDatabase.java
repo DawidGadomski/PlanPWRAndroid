@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Subject.class, version = 1)
+@Database(entities = Subject.class, version = 3)
 public abstract class SubjectDatabase extends RoomDatabase {
     private static SubjectDatabase instance;
     public abstract SubjectDao subjectDao();
@@ -30,7 +30,7 @@ public abstract class SubjectDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
 //            new PopulateDbAsyncTask(instance).execute();
-//            new ClearDbAsyncTask(instance).execute();
+          new ClearDbAsyncTask(instance).execute();
         }
     };
 

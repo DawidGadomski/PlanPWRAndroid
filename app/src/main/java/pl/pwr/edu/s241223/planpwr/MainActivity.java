@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_clear_plan:
                 subjectViewModel.deleteAll();
                 break;
+            case R.id.nav_settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingsFragment()).commit();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

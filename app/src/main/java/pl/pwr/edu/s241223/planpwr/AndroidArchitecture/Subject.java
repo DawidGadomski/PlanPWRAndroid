@@ -4,12 +4,15 @@ package pl.pwr.edu.s241223.planpwr.AndroidArchitecture;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
 
 import pl.pwr.edu.s241223.planpwr.Settings.MainWindowSettings;
@@ -43,10 +46,14 @@ public class Subject implements Serializable {
     private int color;
     @Ignore
     private boolean clickedFlag;
+    @TypeConverters(TestCardConverter.class)
+    private ArrayList<TestCard> testList;
+    @TypeConverters(LinkCardConverter.class)
+    private ArrayList<LinkCard> linksList;
 
 //    private Map<String, Object> dataMap;
 //    private ArrayList<Note> noteArrayList;
-//    private ArrayList<String> testList;
+
 
 
     public Subject(float width, float height, float posX, float posY, String name, String term, int time, String prof,
@@ -54,7 +61,8 @@ public class Subject implements Serializable {
         //      Init
 
 //        this.noteArrayList = new ArrayList<Note>();
-//        this.testList = new ArrayList<String>();
+        this.testList = new ArrayList<TestCard>();
+        this.linksList = new ArrayList<LinkCard>();
 
         this.width = width;
         this.height = height;
@@ -81,7 +89,8 @@ public class Subject implements Serializable {
 //      Init
 
 //        this.noteArrayList = new ArrayList<Note>();
-//        this.testList = new ArrayList<String>();
+        this.testList = new ArrayList<TestCard>();
+        this.linksList = new ArrayList<LinkCard>();
 
         this.color = Color.parseColor("#FFFF00FF");
 
@@ -200,6 +209,24 @@ public class Subject implements Serializable {
     }
 
     public void setSettings(MainWindowSettings settings){this.settings = settings;}
+
+    @TypeConverters(TestCardConverter.class)
+    public ArrayList<TestCard> getTestList() {
+        return testList;
+    }
+    @TypeConverters(TestCardConverter.class)
+    public void setTestList(ArrayList<TestCard> testList) {
+        this.testList = testList;
+    }
+
+    @TypeConverters(LinkCardConverter.class)
+    public ArrayList<LinkCard> getLinksList() {
+        return linksList;
+    }
+    @TypeConverters(LinkCardConverter.class)
+    public void setLinksList(ArrayList<LinkCard> linksList) {
+        this.linksList = linksList;
+    }
 
     //  Functions of Subject
 
@@ -393,5 +420,29 @@ public class Subject implements Serializable {
 
             }
         }
+    }
+
+    public void addTest(String name, String date){
+        TestCard testCard = new TestCard(name, date);
+        this.testList.add(testCard);
+    }
+
+    public void incrementAllAbsences(){
+        this.allAbsences++;
+    }
+    public void decrementAllAbsences(){
+        this.allAbsences--;
+    }
+
+    public void incrementAbsences(){
+        this.absences++;
+    }
+    public void decrementAbsences(){
+        this.absences--;
+    }
+
+    public void addLink(String nameOfSite, String link){
+        LinkCard linkCard = new LinkCard(nameOfSite, Uri.parse(link));
+        this.linksList.add(linkCard);
     }
 }

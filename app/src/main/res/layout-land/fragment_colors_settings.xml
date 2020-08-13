@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7F7F7F"
+    android:background="@color/backgroundColor"
     android:orientation="vertical">
 
 
@@ -19,22 +19,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text"
-        android:textSize="32sp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/textColor"/>
 
     <TextView
         android:id="@+id/tvGridColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/grid"
-        android:textSize="32sp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/textColor"/>
 
     <TextView
         android:id="@+id/tvButtonsColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/buttons"
-        android:textSize="32sp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/textColor"/>
 </LinearLayout>

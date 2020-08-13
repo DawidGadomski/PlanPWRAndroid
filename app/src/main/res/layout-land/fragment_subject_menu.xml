@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7F7F7F">
+    android:background="@color/backgroundColor">
 
     <LinearLayout
         android:id="@+id/lInfo"
@@ -22,60 +22,60 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nazwa"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvLabelTerm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/termin"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvTerm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvLabelRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sala"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvLabelProf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/prowadz_cy"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <TextView
             android:id="@+id/tvProf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -154,8 +154,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/tests"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
 
         </LinearLayout>
 
@@ -163,7 +163,7 @@
             android:id="@+id/rViewTestList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#646464">
+            android:background="@color/inputBackgroundColor">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -214,8 +214,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nieobecno_ci"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
 
         </LinearLayout>
 

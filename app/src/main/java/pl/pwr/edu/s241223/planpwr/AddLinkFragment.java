@@ -21,6 +21,7 @@ public class AddLinkFragment extends Fragment {
     private SubjectViewModel subjectViewModel;
     private Subject subject;
     private Bundle bundle;
+    private int pos;
 
     private Button bAddLink;
     private Button bCancelLink;
@@ -39,6 +40,12 @@ public class AddLinkFragment extends Fragment {
         bundle = getArguments();
         assert bundle != null;
         subject = (Subject) bundle.getSerializable("Subject");
+
+        if(bundle.containsKey("position")){
+            pos = bundle.getInt("position");
+            etNameOfSite.setText(subject.getLinksList().get(pos).getNameOfTheSite());
+            etLink.setText(subject.getLinksList().get(pos).getLink().toString());
+        }
 
         bAddLink = view.findViewById(R.id.bAddLink);
         bCancelLink = view.findViewById(R.id.bCancleLink);

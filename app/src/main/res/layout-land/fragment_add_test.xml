@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/test"
         android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textSize="28sp" />
 
     <EditText
         android:id="@+id/etTestName"
@@ -22,16 +22,17 @@
         android:ems="10"
         android:hint="@string/test_name"
         android:inputType="textPersonName"
-        android:text="@string/e_g_test_1"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/textColor"
+        android:background="@color/inputBackgroundColor"/>
+
 
     <TextView
         android:id="@+id/tvTestDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/test_date"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/big_text_size" />
 
     <EditText
         android:id="@+id/etTestDate"
@@ -40,34 +41,32 @@
         android:layout_weight="1"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/test_date"
+        android:hint="@string/test_date_hint"
         android:inputType="date|textPersonName"
-        android:text="@string/e_g_01_01_2020"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/textColor"
+        android:background="@color/inputBackgroundColor"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        style="?android:attr/buttonBarStyle">
+        >
 
         <Button
             android:id="@+id/bCancleTest"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/Cancel"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/textColor" />
 
         <Button
             android:id="@+id/ibAddTest"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@android:string/ok"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/textColor" />
 
     </LinearLayout>
 </LinearLayout>

@@ -5,4 +5,7 @@
     <dimen name="days_font_size">20sp</dimen>
 
     <dimen name="times_font_size">10sp</dimen>
+    <dimen name="big_text_size">28sp</dimen>
+    <dimen name="small_text_size">18sp</dimen>
+
 </resources>

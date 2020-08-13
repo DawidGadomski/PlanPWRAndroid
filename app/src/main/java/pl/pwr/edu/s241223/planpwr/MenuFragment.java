@@ -26,7 +26,7 @@ public class MenuFragment extends Fragment {
     private SubjectViewModel subjectViewModel;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter recycleViewAdapter;
+    private RecycleViewAdapterForTests recycleViewAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private TextView tvName;
@@ -48,8 +48,6 @@ public class MenuFragment extends Fragment {
     private LinearLayout lAbsences;
     private ViewGroup.LayoutParams layoutParams;
     private Button bAbsence;
-
-
 
     private Bundle bundle;
     private Subject subject;
@@ -95,6 +93,41 @@ public class MenuFragment extends Fragment {
 //        recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recycleViewAdapter = new RecycleViewAdapterForTests(subject.getTestList());
+
+        recycleViewAdapter.setOnItemClickListener(new RecycleViewAdapterForTests.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                subject.getTestList().get(position);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                subject.getTestList().remove(position);
+                recycleViewAdapter.notifyItemRemoved(position);
+            }
+
+            @Override
+            public void onEditClick(int position) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Subject", subject);
+                bundle.putInt("position", position);
+
+                AddTestFragment addTestFragment = new AddTestFragment();
+                addTestFragment.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.fragment_container, addTestFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                subject.getTestList().remove(position);
+                subjectViewModel.update(subject);
+                recycleViewAdapter.notifyItemRemoved(position);
+            }
+        });
+
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recycleViewAdapter);

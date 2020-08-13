@@ -6,12 +6,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.security.auth.Subject;
 
-public class Settings {
+public class Settings implements Serializable {
 
 //      Settings
 

@@ -1,5 +1,6 @@
 package pl.pwr.edu.s241223.planpwr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ public class LinksFragment extends Fragment {
     private Subject subject;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter recyclerViewAdapter;
+    private RecycleViewAdapterForLinks recyclerViewAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Nullable
@@ -45,6 +46,44 @@ public class LinksFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rViewLinks);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerViewAdapter = new RecycleViewAdapterForLinks(subject.getLinksList());
+
+        recyclerViewAdapter.setOnItemClickListener(new RecycleViewAdapterForLinks.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, subject.getLinksList().get(position).getLink());
+                startActivity(browserIntent);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                subject.getLinksList().remove(position);
+                recyclerViewAdapter.notifyItemRemoved(position);
+            }
+
+            @Override
+            public void onEditClick(int position) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Subject", subject);
+                bundle.putInt("position", position);
+
+                AddLinkFragment addLinkFragment = new AddLinkFragment();
+                addLinkFragment.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.fragment_container, addLinkFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                subject.getLinksList().remove(position);
+                subjectViewModel.update(subject);
+                recyclerViewAdapter.notifyItemRemoved(position);
+            }
+        });
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(recyclerViewAdapter);
 
         ibAddLink = view.findViewById(R.id.ibADdLink);
         ibBackFromLinks = view.findViewById(R.id.ibBackFromLinks);

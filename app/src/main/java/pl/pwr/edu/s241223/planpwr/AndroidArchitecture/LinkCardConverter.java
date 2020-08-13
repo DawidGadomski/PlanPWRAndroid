@@ -28,7 +28,7 @@ public class LinkCardConverter {
             return (null);
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<TestCard>>() {}.getType();
+        Type type = new TypeToken<ArrayList<LinkCard>>() {}.getType();
         ArrayList<LinkCard> linkCardsList = gson.fromJson(listString, type);
         return linkCardsList;
     }

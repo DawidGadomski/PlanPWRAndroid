@@ -442,6 +442,8 @@ public class Subject implements Serializable {
     }
 
     public void addLink(String nameOfSite, String link){
+        if (!link.startsWith("http://") && !link.startsWith("https://"))
+            link = "http://" + link;
         LinkCard linkCard = new LinkCard(nameOfSite, Uri.parse(link));
         this.linksList.add(linkCard);
     }

@@ -1,21 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:background="#7F7F7F" android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="#7F7F7F" android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvLinkName"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvLink"
+        <TextView
+            android:id="@+id/tvLinkName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:id="@+id/tvLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginLeft="6sp"
+            android:textColor="@color/inputBackgroundColor"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibEditLinkCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_marginLeft="6sp"
-        android:textColor="@color/colorLighterGrey"/>
+        android:layout_height="match_parent"
+        android:maxWidth="1sp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_edit" />
+
+    <ImageButton
+        android:id="@+id/ibDeleteLinkCard"
+        android:layout_width="match_parent"
+        android:maxWidth="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_delete" />
+
+
 </LinearLayout>
+
+
+

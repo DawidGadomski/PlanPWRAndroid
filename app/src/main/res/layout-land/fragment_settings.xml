@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tLayoutSettings"
 
-        android:background="#7F7F7F"
+        android:background="@color/backgroundColor"
         android:orientation="vertical"
-        app:tabTextColor="#FFFFFF"
+        app:tabTextColor="@color/textColor"
         >
 
         <com.google.android.material.tabs.TabItem

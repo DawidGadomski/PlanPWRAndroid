@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#969696"
+    android:background="@color/backgroundColor"
     tools:context=".InputSubjectFragment">
 
     <RadioGroup
@@ -23,16 +23,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lect"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <RadioButton
             android:id="@+id/rbLab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Lab"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
     </RadioGroup>
 
     <Button
@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Cancel"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
@@ -56,8 +57,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
         android:text="@string/Name"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/small_text_size"
         app:layout_constraintBottom_toTopOf="@+id/tvTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,11 +71,11 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
-        android:background="#7F7F7F"
+        android:background="@color/inputBackgroundColor"
         android:ems="10"
         android:hint="@string/NameHint"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@+id/edTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
@@ -89,11 +90,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="4dp"
-        android:background="#7F7F7F"
+        android:background="@color/inputBackgroundColor"
         android:ems="10"
         android:hint="@string/TermHint"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toEndOf="@+id/tvTerm"
@@ -107,11 +108,11 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="4dp"
-        android:background="#7F7F7F"
+        android:background="@color/inputBackgroundColor"
         android:ems="10"
         android:hint="@string/RoomHint"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toEndOf="@+id/tvRoom"
@@ -123,11 +124,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="#7F7F7F"
+        android:background="@color/inputBackgroundColor"
         android:ems="10"
         android:hint="@string/ProfHint"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toEndOf="@+id/tvProf"
@@ -141,11 +142,11 @@
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
         android:layout_marginTop="4dp"
-        android:background="#7F7F7F"
+        android:background="@color/inputBackgroundColor"
         android:ems="10"
         android:hint="@string/TimeHint"
         android:inputType="number"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toEndOf="@+id/tvTime"
@@ -159,6 +160,8 @@
         android:layout_marginStart="156dp"
         android:layout_marginLeft="156dp"
         android:text="@android:string/ok"
+        android:textColor="@color/textColor"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgType"
@@ -172,8 +175,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:text="@string/Term"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
@@ -185,8 +188,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:text="@string/Room"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProf" />
 
@@ -198,8 +201,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:text="@string/Prof"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTerm" />
 
@@ -211,8 +214,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:text="@string/Time"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -232,24 +235,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Week"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <RadioButton
             android:id="@+id/rbOddWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/OddWeek"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
 
         <RadioButton
             android:id="@+id/rbEvenWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/EvenWeek"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/small_text_size" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

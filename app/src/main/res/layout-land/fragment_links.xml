@@ -10,15 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/links"
-        android:textSize="28sp"
-        android:textColor="#FFFFFF"
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/textColor"
         android:textAlignment="center"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rViewLinks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/inputBackgroundColor">
 
     </androidx.recyclerview.widget.RecyclerView>
 

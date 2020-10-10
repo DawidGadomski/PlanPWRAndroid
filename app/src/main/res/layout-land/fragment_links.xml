@@ -19,7 +19,7 @@
         android:id="@+id/rViewLinks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/inputBackgroundColor">
+        android:background="@color/secondColor">
 
     </androidx.recyclerview.widget.RecyclerView>
 

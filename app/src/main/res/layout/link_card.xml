@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:layout_marginLeft="6sp"
-            android:textColor="@color/inputBackgroundColor"/>
+            android:textColor="@color/mainColor"/>
     </LinearLayout>
 
     <ImageButton

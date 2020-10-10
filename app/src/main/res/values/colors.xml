@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorGreen">#209F20</color>
-    <color name="colorRed">#B12B2B</color>
-    <color name="inputBackgroundColor">#969696</color>
-    <color name="buttonBackgroundColor">#CCCCCC</color>
-    <color name="backgroundColor">#7F7F7F</color>
+    <color name="mainColor">#209F20</color>
+    <color name="secondColor">#B12B2B</color>
+    <color name="thirdColor">#969696</color>
+    <color name="fourthColor">#CCCCCC</color>
+    <color name="gridBackgroundColor">#7F7F7F</color>
     <color name="textColor">#FFFFFF</color>
-
-
-
+    <color name="darkTextColor">#6A7475</color>
+    <color name="lectureColor">#FFFFFF</color>
+    <color name="seminaryColor">#FFFFFF</color>
+    <color name="labColor">#FFFFFF</color>
+    <color name="projectColor">#FFFFFF</color>
 </resources>

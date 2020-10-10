@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tLayoutSettings"
 
-        android:background="@color/backgroundColor"
+        android:background="@color/mainColor"
         android:orientation="vertical"
         app:tabTextColor="@color/textColor"
         >

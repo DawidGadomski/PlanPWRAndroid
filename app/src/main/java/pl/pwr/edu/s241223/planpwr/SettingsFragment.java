@@ -19,6 +19,7 @@ public class SettingsFragment extends Fragment {
 
     private AboutSettingsFragment aboutSettingsFragment;
     private ColorSettingsFragment colorSettingsFragment;
+    private AdvancedSettingsFragment advancedSettingsFragment;
 
     @Nullable
     @Override
@@ -30,12 +31,14 @@ public class SettingsFragment extends Fragment {
 
         colorSettingsFragment = new ColorSettingsFragment();
         aboutSettingsFragment = new AboutSettingsFragment();
+        advancedSettingsFragment = new AdvancedSettingsFragment();
 
         tabLayoutSettings.setupWithViewPager(viewPagerSettings);
 
         viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(colorSettingsFragment, "Colors");
         viewPagerAdapter.addFragment(aboutSettingsFragment, "About");
+        viewPagerAdapter.addFragment(advancedSettingsFragment, "Advanced");
         viewPagerSettings.setAdapter(viewPagerAdapter);
 
         return view;

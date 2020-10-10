@@ -2,39 +2,261 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    android:orientation="vertical">
+    android:background="@color/mainColor"
+    android:orientation="horizontal">
 
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TableRow>
+            <TextView
+                android:id="@+id/tvFirstColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mainColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
 
-    <TextView
-        android:id="@+id/tvBackgroundColor"
+            <Button
+                android:id="@+id/bMainColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/mainColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvFirstColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mainColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvSecondColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/secondColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bSecondColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/secondColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvSecondColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/secondColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvThirdColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/thirdColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bThirdColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/thirdColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvThirdColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thirdColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvFourthColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fourthColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bFourthColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/fourthColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvFourthColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fourthColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvGridBackgroundColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gridColor"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bGridColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gridBackgroundColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvGridBackgroundColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gridColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvTextColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/textColor"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/background"
-        android:textSize="32sp"
-        android:textColor="#FFFFFF"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTextColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text"
-        android:textSize="@dimen/big_text_size"
-        android:textColor="@color/textColor"/>
+        <TableRow>
+            <TextView
+                android:id="@+id/tvLectureColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lectureColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
 
-    <TextView
-        android:id="@+id/tvGridColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/grid"
-        android:textSize="@dimen/big_text_size"
-        android:textColor="@color/textColor"/>
+            <Button
+                android:id="@+id/bLectureColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/lectureColor"
+                />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/tvButtonsColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/buttons"
-        android:textSize="@dimen/big_text_size"
-        android:textColor="@color/textColor"/>
+        <TextView
+            android:id="@+id/tvLectureInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lectureColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvProjectColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/projectColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bProjectColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/projectColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvProjectColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/projectColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvSeminaryColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/seminaryColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bSeminaryColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/seminaryColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvSeminaryColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/seminaryColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tvLabColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/labColor"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/big_text_size" />
+
+            <Button
+                android:id="@+id/bLabColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/labColor"
+                />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/tvLabColorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labColorInfo"
+            android:textColor="@color/darkTextColor"
+            android:textSize="@dimen/small_text_size" />
+
+    </TableLayout>
+
 </LinearLayout>

@@ -1,4 +1,7 @@
 <resources>
+    <string name="facebook_app_id">794003957811227</string>
+    <string name="fb_login_protocol_scheme">fb794003957811227</string>
+
     <string name="title">PWr\'s Plan</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -40,7 +43,7 @@
     <string name="test_date">Test Date</string>
     <string name="test_date_hint">Test Date e.g 01.01.2020</string>
     <string name="test_name">Test name e.g Test 1</string>
-
+    <string name="connect_with_FB">Connect with FaceBook</string>
     <string name="increment_number_of_absences">Increment number of absences</string>
     <string name="confirm_changes">Confirm changes</string>
     <string name="decrement_number_of_absences">Decrement number of Absences</string>
@@ -84,4 +87,8 @@
     <string name="pickColor">Pick Color</string>
     <string name="chooseFilePath">Choose file path</string>
     <string name="noSelection">No Selection</string>
+    <string name="pro">Projekt</string>
+    <string name="sem">Seminarium</string>
+    <string name="note">Notatki</string>
+    <string name="noteText">Przykładowy tekst...</string>
 </resources>

@@ -16,12 +16,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mainColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bMainColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/mainColor"
                 />
         </TableRow>
@@ -41,12 +41,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/secondColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bSecondColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/secondColor"
                 />
         </TableRow>
@@ -66,12 +66,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/thirdColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bThirdColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/thirdColor"
                 />
         </TableRow>
@@ -91,12 +91,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/fourthColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bFourthColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/fourthColor"
                 />
         </TableRow>
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:text="@string/fourthColorInfo"
             android:textColor="@color/darkTextColor"
-            android:textSize="@dimen/small_text_size" />
+            android:textSize="@dimen/medium_text_size" />
 
         <TableRow>
             <TextView
@@ -116,12 +116,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gridColor"
                 android:textColor="#FFFFFF"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bGridColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/gridBackgroundColor"
                 />
         </TableRow>
@@ -141,19 +141,19 @@
                 android:layout_height="wrap_content"
                 android:text="@string/textColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bTextColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/textColor"
                 />
         </TableRow>
     </TableLayout>
 
     <TableLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -164,12 +164,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/lectureColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bLectureColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/lectureColor"
                 />
         </TableRow>
@@ -189,12 +189,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/projectColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bProjectColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/projectColor"
                 />
         </TableRow>
@@ -214,12 +214,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/seminaryColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bSeminaryColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/seminaryColor"
                 />
         </TableRow>
@@ -239,12 +239,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/labColor"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/big_text_size" />
+                android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/bLabColor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/labColor"
                 />
         </TableRow>

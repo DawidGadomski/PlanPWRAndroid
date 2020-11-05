@@ -1,5 +1,6 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,6 +22,7 @@ import java.util.TreeMap;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+import pl.pwr.edu.s241223.planpwr.R;
 
 public class InputSubjectFragment extends Fragment {
     private InputSubjectFragmentListener inputSubjectFragmentListener;
@@ -33,6 +37,8 @@ public class InputSubjectFragment extends Fragment {
     private Button bAccept, bCancel;
     private String name, term, time, prof, room, type, week;
     private RadioButton rLab;
+    private RadioButton rbPro;
+    private RadioButton rbSem;
     private RadioButton rLect;
     private RadioButton rWeek;
     private RadioButton rOddWeek;
@@ -71,6 +77,8 @@ public class InputSubjectFragment extends Fragment {
         rOddWeek = view.findViewById(R.id.rbOddWeek);
         rLect = view.findViewById(R.id.rbLect);
         rLab = view.findViewById(R.id.rbLab);
+        rbPro = view.findViewById(R.id.rbPro);
+        rbSem = view.findViewById(R.id.rbSem);
 
         bundle = getArguments();
         if(bundle != null) {
@@ -83,7 +91,15 @@ public class InputSubjectFragment extends Fragment {
             if(subjectToEdit.getType()==1){
                 rLab.setChecked(true);
             }
-            else rLect.setChecked(true);
+            else if (subjectToEdit.getType()==2){
+                rLect.setChecked(true);
+            }
+            else if (subjectToEdit.getType()==3){
+                rbPro.setChecked(true);
+            }
+            else if (subjectToEdit.getType()==4){
+                rbSem.setChecked(true);
+            }
 
             if(subjectToEdit.getWeek().equals("TN")){
                 rOddWeek.setChecked(true);
@@ -108,10 +124,23 @@ public class InputSubjectFragment extends Fragment {
         }
         else {
             bAccept.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void onClick(View v) {
                     Map<String, Object> dataMap = createDataOfSubject();
-                    subjectViewModel.insert(new Subject(dataMap));
+                    if(rLect.isChecked()){
+                        subjectViewModel.insert(new Subject(dataMap, ContextCompat.getColor(getContext(), R.color.lectureColor)));
+                    }
+                    else if(rLab.isChecked()){
+                        subjectViewModel.insert(new Subject(dataMap, ContextCompat.getColor(getContext(), R.color.labColor)));
+                    }
+                    else if(rbSem.isChecked()){
+                        subjectViewModel.insert(new Subject(dataMap, ContextCompat.getColor(getContext(), R.color.seminaryColor)));
+                    }
+                    else if(rbPro.isChecked()){
+                        subjectViewModel.insert(new Subject(dataMap, ContextCompat.getColor(getContext(), R.color.projectColor)));
+                    }
+
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new PlanFragment()).commit();
 

@@ -13,9 +13,15 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.material.navigation.NavigationView;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+import pl.pwr.edu.s241223.planpwr.Fragments.InputSubjectFragment;
+import pl.pwr.edu.s241223.planpwr.Fragments.PlanFragment;
+import pl.pwr.edu.s241223.planpwr.Fragments.SettingsFragment;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -1,4 +1,4 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+
+import pl.pwr.edu.s241223.planpwr.R;
+import pl.pwr.edu.s241223.planpwr.ViewPagerAdapter;
 
 public class SettingsFragment extends Fragment {
     private TabLayout tabLayoutSettings;

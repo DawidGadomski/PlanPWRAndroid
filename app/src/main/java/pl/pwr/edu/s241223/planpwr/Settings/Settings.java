@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import javax.security.auth.Subject;
 
+import pl.pwr.edu.s241223.planpwr.R;
+
 public class Settings implements Serializable {
 
 //      Settings
@@ -23,10 +25,6 @@ public class Settings implements Serializable {
     private float subjectHeight;
     protected SimpleDateFormat sdf;
     private Rect textBounds;
-
-    private int backgroundColor;
-    private int gridColor;
-    private int workspaceColor;
 
 //  Data
     private ArrayList<Subject> subjects;
@@ -43,11 +41,6 @@ public class Settings implements Serializable {
         subjectHeight = tileHeight;
 
         textBounds = new Rect();
-
-//      Colors
-        backgroundColor = Color.parseColor("#FF282828");
-        gridColor = Color.parseColor("#FF808080");
-        workspaceColor = Color.parseColor("#FFC8C8C8");
 
         sdf =  new SimpleDateFormat("HH.mm");
     }
@@ -70,18 +63,6 @@ public class Settings implements Serializable {
 
     public SimpleDateFormat getSdf() {
         return sdf;
-    }
-
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public int getGridColor() {
-        return gridColor;
-    }
-
-    public int getWorkspaceColor() {
-        return workspaceColor;
     }
 
     public ArrayList<Subject> getSubjects() {

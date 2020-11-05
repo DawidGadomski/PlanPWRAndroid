@@ -1,4 +1,4 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+import pl.pwr.edu.s241223.planpwr.R;
+import pl.pwr.edu.s241223.planpwr.RecycleViewAdapterForTests;
 
 import static android.view.View.GONE;
 
@@ -42,6 +44,7 @@ public class MenuFragment extends Fragment {
     private ImageButton ibConfirmAbsence;
     private ImageButton ibRemoveAbsence;
     private ImageButton ibLinks;
+    private ImageButton ibNotes;
 
     private ImageButton bEditAbsences;
 
@@ -81,6 +84,7 @@ public class MenuFragment extends Fragment {
         ibRemoveAbsence = view.findViewById(R.id.ibRemoveAbsence);
         bEditAbsences = view.findViewById(R.id.bEditAbsences);
         ibLinks = view.findViewById(R.id.ibLinks);
+        ibNotes = view.findViewById(R.id.ibNotes);
 
         tvName.setText(subject.getName());
         tvRoom.setText(subject.getRoom());
@@ -242,8 +246,23 @@ public class MenuFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, linksFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            }
+        });
 
+        ibNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Subject", subject);
+                NotesFragment notesFragment = new NotesFragment();
+                notesFragment.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.fragment_container, notesFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 

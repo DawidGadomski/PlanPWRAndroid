@@ -1,4 +1,4 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+import pl.pwr.edu.s241223.planpwr.R;
+import pl.pwr.edu.s241223.planpwr.RecycleViewAdapterForLinks;
 
 public class LinksFragment extends Fragment {
     private ImageButton ibAddLink;

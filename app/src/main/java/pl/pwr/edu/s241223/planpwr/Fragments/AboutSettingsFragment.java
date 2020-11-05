@@ -1,4 +1,4 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import pl.pwr.edu.s241223.planpwr.R;
 
 public class AboutSettingsFragment extends Fragment {
     @Nullable

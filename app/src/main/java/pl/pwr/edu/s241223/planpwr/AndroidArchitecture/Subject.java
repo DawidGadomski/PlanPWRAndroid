@@ -42,7 +42,6 @@ public class Subject implements Serializable {
 
     @Ignore
     private MainWindowSettings settings;
-    @Ignore
     private int color;
     @Ignore
     private boolean clickedFlag;
@@ -50,17 +49,17 @@ public class Subject implements Serializable {
     private ArrayList<TestCard> testList;
     @TypeConverters(LinkCardConverter.class)
     private ArrayList<LinkCard> linksList;
+    @TypeConverters(NoteCardConverter.class)
+    private ArrayList<NoteCard> notesList;
 
-//    private Map<String, Object> dataMap;
-//    private ArrayList<Note> noteArrayList;
 
 
 
     public Subject(float width, float height, float posX, float posY, String name, String term, int time, String prof,
-                   String room, int type, String week, int absences, int allAbsences) {
+                   String room, int type, String week, int absences, int allAbsences, int color) {
         //      Init
 
-//        this.noteArrayList = new ArrayList<Note>();
+        this.notesList = new ArrayList<NoteCard>();
         this.testList = new ArrayList<TestCard>();
         this.linksList = new ArrayList<LinkCard>();
 
@@ -78,21 +77,21 @@ public class Subject implements Serializable {
         this.absences = absences;
         this.allAbsences = allAbsences;
 
-        selectColor();
+        this.color = color;
     }
 
     /***
      * Tworzenie nowego przedmiotu
      * @param map - mapa dostarczona przez formularz tworzenia przedmiotu (InputForm) zawierająca dane do stworzenia przedmiotu
      */
-    public Subject(Map<String, Object> map){
+    public Subject(Map<String, Object> map, int color){
 //      Init
 
-//        this.noteArrayList = new ArrayList<Note>();
+        this.notesList = new ArrayList<NoteCard>();
         this.testList = new ArrayList<TestCard>();
         this.linksList = new ArrayList<LinkCard>();
 
-        this.color = Color.parseColor("#FFFF00FF");
+        this.color = color;
 
 //      Data of Subject
 
@@ -107,12 +106,6 @@ public class Subject implements Serializable {
         this.week = String.valueOf(map.get("week"));
         this.absences = 0;
         this.allAbsences = 1;
-
-//      Update color (based on data of subject)
-        selectColor();
-
-//        this.dataMap = map;
-
     }
 
     public void updateSubject(Map<String, Object> dataMap){
@@ -228,22 +221,16 @@ public class Subject implements Serializable {
         this.linksList = linksList;
     }
 
-    //  Functions of Subject
-
-
-    /***
-     * Funkcja wyznaczająca kolor przedmiotu na podstawie typu
-     * Lab - czerwony
-     * Wykład - niebieski
-     */
-    public void selectColor() {
-        if (this.type == 1){
-            setColor(Color.parseColor("#FFFF0000"));
-        }
-        else if (this.type == 2){
-            setColor(Color.parseColor("#FF0000FF"));
-        }
+    @TypeConverters(NoteCardConverter.class)
+    public ArrayList<NoteCard> getNotesList() {
+        return notesList;
     }
+    @TypeConverters(NoteCardConverter.class)
+    public void setNotesList(ArrayList<NoteCard> notesList) {
+        this.notesList = notesList;
+    }
+
+    //  Functions of Subject
 
     /***
      * Funkcja wyznaczająca szerokość przedmiotu na podstawie czasu
@@ -417,7 +404,6 @@ public class Subject implements Serializable {
                 if (this.posY < settings.getWorkSurfacePosY() + 1){
                     this.posY = settings.getWorkSurfacePosY() + 1;
                 }
-
             }
         }
     }
@@ -446,5 +432,10 @@ public class Subject implements Serializable {
             link = "http://" + link;
         LinkCard linkCard = new LinkCard(nameOfSite, Uri.parse(link));
         this.linksList.add(linkCard);
+    }
+
+    public void addNote(String noteText){
+        NoteCard noteCard = new NoteCard(0, 0, noteText);
+        notesList.add(noteCard);
     }
 }

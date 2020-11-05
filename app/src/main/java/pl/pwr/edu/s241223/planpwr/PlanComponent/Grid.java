@@ -5,12 +5,15 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import java.sql.Timestamp;
@@ -18,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
+import pl.pwr.edu.s241223.planpwr.R;
 import pl.pwr.edu.s241223.planpwr.Settings.MainWindowSettings;
 
 
@@ -43,6 +47,7 @@ public class Grid extends View {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void init(@Nullable AttributeSet set){
 
 //      Paints
@@ -51,9 +56,10 @@ public class Grid extends View {
         workspacePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         subjectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+        gridPaint.setColor(ContextCompat.getColor(getContext(), R.color.thirdColor));
+        workspacePaint.setColor(ContextCompat.getColor(getContext(), R.color.fourthColor));
 
-
-
+        this.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.gridBackgroundColor));
 
     }
 
@@ -63,10 +69,7 @@ public class Grid extends View {
         WIDTH = getWidth();
         HEIGHT = getHeight();
         settings = new MainWindowSettings(WIDTH, HEIGHT);
-        gridPaint.setColor(settings.getGridColor());
-        workspacePaint.setColor(settings.getWorkspaceColor());
 
-        this.setBackgroundColor(settings.getBackgroundColor());
 
     }
 

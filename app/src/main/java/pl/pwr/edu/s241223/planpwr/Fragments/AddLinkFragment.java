@@ -1,4 +1,4 @@
-package pl.pwr.edu.s241223.planpwr;
+package pl.pwr.edu.s241223.planpwr.Fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.LinkCard;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.Subject;
 import pl.pwr.edu.s241223.planpwr.AndroidArchitecture.SubjectViewModel;
+import pl.pwr.edu.s241223.planpwr.R;
 
 public class AddLinkFragment extends Fragment {
     private SubjectViewModel subjectViewModel;

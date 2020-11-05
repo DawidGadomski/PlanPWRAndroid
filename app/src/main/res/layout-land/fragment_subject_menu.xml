@@ -112,6 +112,14 @@
             app:srcCompat="@drawable/ic_public" />
 
         <ImageButton
+            android:id="@+id/ibNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/links"
+            app:srcCompat="@drawable/ic_note" />
+
+        <ImageButton
             android:id="@+id/bDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

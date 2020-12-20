@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:background="#7F7F7F" android:orientation="horizontal">
+    android:layout_height="wrap_content" android:background="@color/secondColor" android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,32 +14,30 @@
             android:id="@+id/tvTestName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/medium_text_size" />
 
         <TextView
             android:id="@+id/tvDateOfTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6sp"
-            android:textColor="@color/mainColor"
-            android:textSize="16sp" />
+            android:layout_marginLeft="3sp"
+            android:textColor="@color/thirdColor"
+            android:textSize="@dimen/small_text_size" />
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/ibEditTestCard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:maxWidth="1sp"
-        android:layout_weight="1"
         app:srcCompat="@drawable/ic_edit" />
 
     <ImageButton
         android:id="@+id/ibDeleteTestCard"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:maxWidth="1dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_delete" />
 
 

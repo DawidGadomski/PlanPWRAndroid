@@ -91,4 +91,5 @@
     <string name="sem">Seminarium</string>
     <string name="note">Notatki</string>
     <string name="noteText">Przykładowy tekst...</string>
+    <string name="load_from_iCalendar">iCalendar</string>
 </resources>

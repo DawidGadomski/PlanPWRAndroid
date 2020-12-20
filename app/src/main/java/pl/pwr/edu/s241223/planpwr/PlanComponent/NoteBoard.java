@@ -68,8 +68,8 @@ public class NoteBoard extends View {
             int height = bounds.height();
             int width = bounds.width();
 
-            note.setWidth(width);
-            note.setHeight(height);
+            note.setWidth((width + WIDTH/10));
+            note.setHeight((height + HEIGHT/6));
         }
     }
 

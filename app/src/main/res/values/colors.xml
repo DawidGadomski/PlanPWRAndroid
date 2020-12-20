@@ -7,8 +7,8 @@
     <color name="gridBackgroundColor">#7F7F7F</color>
     <color name="textColor">#FFFFFF</color>
     <color name="darkTextColor">#6A7475</color>
-    <color name="lectureColor">#FFFFFF</color>
-    <color name="seminaryColor">#FFFFFF</color>
-    <color name="labColor">#FFFFFF</color>
-    <color name="projectColor">#FFFFFF</color>
+    <color name="lectureColor">#FF00FF</color>
+    <color name="seminaryColor">#FFFF00</color>
+    <color name="labColor">#00FFFF</color>
+    <color name="projectColor">#F0000F</color>
 </resources>

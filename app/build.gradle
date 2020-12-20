@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android.defaultConfig.vectorDrawables.useSupportLibrary = true
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -11,6 +12,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -42,6 +44,7 @@ dependencies {
     def room_version = "2.2.5"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.github.QuadFlask:colorpicker:0.0.15'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.material:material:1.1.0'
@@ -63,6 +66,22 @@ dependencies {
     //  Room
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+//    ical4j
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    implementation 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:25.0.1'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'pub.devrel:easypermissions:0.3.0'
+    implementation('com.google.api-client:google-api-client-android:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+//    implementation('com.google.apis:google-api-services-<API>-<VERSION>') {
+//        exclude group: 'org.apache.httpcomponents'
+//    }
 
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'

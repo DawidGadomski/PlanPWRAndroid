@@ -70,7 +70,6 @@ public class Grid extends View {
         HEIGHT = getHeight();
         settings = new MainWindowSettings(WIDTH, HEIGHT);
 
-
     }
 
     @Override
@@ -80,15 +79,17 @@ public class Grid extends View {
         drawBackground(canvas);
         drawText(canvas);
 
+        if(subjects != null){
 
-        for(Subject subject : subjects){
-            subject.setSettings(settings);
-            subject.setWidth();
-            subject.setHeight();
+            for(Subject subject : subjects){
+                subject.setSettings(settings);
+                subject.setWidth();
+                subject.setHeight();
 
-            subject.drawSubject(canvas, subjectPaint);
-            if(subject.getClickedFlag()){
-                subject.drawOutline(canvas, subjectPaint);
+                subject.drawSubject(canvas, subjectPaint);
+                if(subject.getClickedFlag()){
+                    subject.drawOutline(canvas, subjectPaint);
+                }
             }
         }
     }
